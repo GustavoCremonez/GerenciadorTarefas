@@ -6,5 +6,6 @@ namespace GerenciadorTarefas.Domain.Contracts.Task
     {
         List<TaskModel> GetTasks();
         TaskModel SaveTask(TaskModel task);
+        TaskModel ChangeStatus(int id, int status);
     }
 }

@@ -1,11 +1,12 @@
 ﻿@using GerenciadorTarefas.Data.Models;
+@using GerenciadorTarefas.Data.Models.utils;
 @model List<TaskModel>
 
 @{
     ViewData["Title"] = "Task Page";
 }
 
-<h1 class="fs-2 text-center">Suas tarefas</h1>
+<h1 class="fs-2 text-center border-bottom border-dark mb-3">Suas tarefas</h1>
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
    <a role="button" class="btn btn-info shadow mb-4" asp-controller="Task" asp-action="Create">Adicionar nova tarefa</a>
@@ -28,5 +29,61 @@
 }
 
 <section class="container-fluid">
-
+    <div class="row justify-content-around g-3">
+        <div class="col-md-3 col-sm-auto border border-secondary bg-secondary bg-opacity-25 rounded p-0">
+            <p class="bg-secondary bg-opacity-100 fw-bolder text-center">Tarefas não iniciadas</p>
+            @if (Model != null && Model.Any())
+            {
+                foreach (TaskModel task in Model)
+                {
+                    if(task.status == (int)StatusTaskEnum.Pending)
+                    {
+                        <div class="text-center d-flex justify-content-between p-2">
+                            <span class="mr-3">@task.Title - @task.Description</span>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-info" asp-route-id="@task.Id" asp-controller="Task" asp-action="ChangeStatus" asp-route-status="2"></a>
+                            </div>
+                        </div>
+                    }    
+                }
+            }
+        </div>
+        <div class="col-md-3 col-sm-auto border border-info bg-info bg-opacity-25 rounded p-0">
+            <p class="bg-info bg-opacity-75 fw-bolder text-center">Tarefas em andamento</p>
+            @if (Model != null && Model.Any())
+            {
+                foreach (TaskModel task in Model)
+                {
+                    if (task.status == (int)StatusTaskEnum.Started)
+                    {
+                        <div class="text-center d-flex justify-content-between p-2">
+                            <span class="mr-3">@task.Title - @task.Description</span>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-secondary" asp-route-id="@task.Id" asp-controller="Task" asp-action="ChangeStatus" asp-route-status="3"></a>
+                                <a role="button" class="btn btn-success" asp-route-id="@task.Id" asp-controller="Task" asp-action="ChangeStatus" asp-route-status="1"></a>
+                            </div>
+                        </div>
+                    }    
+                }
+            }
+        </div>
+        <div class="col-md-3 col-sm-auto border border-success bg-success bg-opacity-25 rounded p-0">
+            <p class="bg-success bg-opacity-75 fw-bolder w-100 text-center">Tarefas concluídas</p>
+            @if (Model != null && Model.Any())
+            {
+                foreach (TaskModel task in Model)
+                {
+                    if (task.status == (int)StatusTaskEnum.Finished)
+                    {
+                        <div class="text-center d-flex justify-content-between p-2">
+                            <span class="mr-3">@task.Title - @task.Description</span>
+                              <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-info" asp-route-id="@task.Id" asp-controller="Task" asp-action="ChangeStatus" asp-route-status="2"></a>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
 </section>

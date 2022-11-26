@@ -14,5 +14,10 @@ namespace GerenciadorTarefas.Domain.Services
         {
             return _taskRepository.SaveTask(task);
         }
+
+        public TaskModel ChangeStatus(int id, int status)
+        {
+            return _taskRepository.ChangeStatus(id, status);
+        }
     }
 }

@@ -45,5 +45,18 @@ namespace GerenciadorTarefas.Domain.Controllers
                 return RedirectToAction("Create", task);
             }
         }
+
+        public IActionResult ChangeStatus(int id, int status)
+        {
+            try
+            {
+                _taskRepository.ChangeStatus(id, status);
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index", TempData["MensagemErro"] = $"Houve um erro ao atualizar o status da tarefa, detalhe do erro: {ex.Message}");
+            }
+        }
     }
 }

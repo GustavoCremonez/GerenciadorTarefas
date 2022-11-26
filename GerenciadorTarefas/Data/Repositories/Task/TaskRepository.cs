@@ -23,5 +23,18 @@ namespace GerenciadorTarefas.Data.Repositories.Task
 
             return task;
         }
+
+        public TaskModel ChangeStatus(int id, int status)
+        {
+            var taskInDB = _context.Tasks.Where(x => x.Id == id).FirstOrDefault();
+
+            if(taskInDB != null)
+            {
+                taskInDB.status = status;
+                _context.SaveChanges();
+                return taskInDB;
+            }
+            throw new ArgumentNullException();
+        }
     }
 }
