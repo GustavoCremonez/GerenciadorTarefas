@@ -21,9 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Services\" />
     <Folder Include="Views\User\" />
-    <Folder Include="Views\Task\" />
   </ItemGroup>
 
 </Project>

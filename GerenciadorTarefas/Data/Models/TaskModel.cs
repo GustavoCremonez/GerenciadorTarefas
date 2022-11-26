@@ -6,21 +6,15 @@ namespace GerenciadorTarefas.Data.Models
 {
     public class TaskModel
     {
-        [Display(Name = "Código")]
         public long Id { get; set; }
-
-        [Display(Name = "Título")]
+        [Required(ErrorMessage = "O título da tarefa é obrigatório")]
         public string Title { get; set; } = string.Empty;
-
-        [Display(Name = "Descrição")]
+        [Required(ErrorMessage = "A descrição da tarefa é obrigatório")]
         public string Description { get; set; } = string.Empty;
+        public int status { get; set; } = 3;
 
-        [Display(Name = "Código do usuário")]
         [ForeignKey("User")]
-        public long IdUser { get; set; }
-        public UserModel user { get; set; }
-
-        [Display(Name = "Status")]
-        public int status { get; }
+        public long? UserId { get; set; }
+        public UserModel? user { get; set; }
     }
 }

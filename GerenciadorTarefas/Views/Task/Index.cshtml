@@ -1,0 +1,32 @@
+﻿@using GerenciadorTarefas.Data.Models;
+@model List<TaskModel>
+
+@{
+    ViewData["Title"] = "Task Page";
+}
+
+<h1 class="fs-2 text-center">Suas tarefas</h1>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+   <a role="button" class="btn btn-info shadow mb-4" asp-controller="Task" asp-action="Create">Adicionar nova tarefa</a>
+</div>
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+<section class="container-fluid">
+
+</section>
