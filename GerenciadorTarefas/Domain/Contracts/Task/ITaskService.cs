@@ -4,7 +4,12 @@ namespace GerenciadorTarefas.Domain.Contracts.Task
 {
     public interface ITaskService
     {
-        public TaskModel SaveTask(TaskModel Task);
-        public TaskModel ChangeStatus(int id, int status);
+        TaskModel SaveTask(TaskModel Task);
+        TaskModel ChangeStatus(long id, int status);
+        List<TaskModel> GetTasks();
+        TaskModel GetTaskById(long id);
+        TaskModel EditTask(TaskModel task);
+
+        bool DeleteTask(long id);
     }
 }

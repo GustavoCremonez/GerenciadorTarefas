@@ -9,19 +9,20 @@
 
 <section class="p-4 container-fluid border border-info shadow rounded">
     <form asp-controller="Task" asp-action="Create" method="post">
-      <div class="mb-3 ">
-        <label for="title" class="form-label">Título</label>
-        <input type="text" name="title" asp-for="Title" class="form-control">
-        @Html.ValidationMessageFor(x => x.Title)
-     </div>
-      <div class="mb-3">
-        <label for="description">Descrição</label>
-        <textarea class="form-control" name="description" asp-for="Description" style="height: 100px"></textarea>
-        @Html.ValidationMessageFor(x => x.Description)
-      </div>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <button type="submit" class="btn btn-primary shadow">Cadastrar</button>
+        <input type="hidden" asp-for="Id" />
+        <div class="mb-3 ">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" name="title" asp-for="Title" class="form-control">
+            @Html.ValidationMessageFor(x => x.Title)
+        </div>
+        <div class="mb-3">
+            <label for="description">Descrição</label>
+            <textarea class="form-control" name="description" asp-for="Description" style="height: 100px"></textarea>
+            @Html.ValidationMessageFor(x => x.Description)
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="submit" class="btn btn-primary shadow">Cadastrar</button>
             <button class ="btn btn-warning shadow" asp-asp-controller="Task" asp-action="Index">Voltar</button>
-      </div>
+        </div>
     </form>
 </section>
