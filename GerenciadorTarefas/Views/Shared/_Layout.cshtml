@@ -11,8 +11,8 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 w-100">
+            <div class="container-fluid w-100">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GerenciadorTarefas</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="User" asp-action="Index"><i class="fa-solid fa-user"></i> Perfil</a>
+                        </li>
+                       <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-right-to-bracket"></i>  Acesso
+                          </a>
+                          <ul class="dropdown-menu align-self-end">
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Login">Entrar</a></li>
+                                <li><a class="dropdown-item" href="#">Sair</a></li>
+                          </ul>
                         </li>
                     </ul>
                 </div>

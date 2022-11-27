@@ -1,18 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
 
 namespace GerenciadorTarefas.Data.Models
 {
     public class UserModel
     {
-        [Display(Name = "Código")]
         public long Id { get; set; }
-        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "O campo nome é obrigatório")]
         public string Name { get; set; } = string.Empty;
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "O campo email é obrigatório")]
         public string Email { get; set; } = string.Empty;
-        [Display(Name = "Senha")]
+        [Required(ErrorMessage = "O campo senha é obrigatório")]
         public string Password { get; set; } = string.Empty;
         public List<TaskModel> Tasks { get; set; }
     }

@@ -7,5 +7,6 @@ namespace GerenciadorTarefas.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<TaskModel> Tasks { get; set; }
+        public DbSet<UserModel> Users { get; set; }
     }
 }
