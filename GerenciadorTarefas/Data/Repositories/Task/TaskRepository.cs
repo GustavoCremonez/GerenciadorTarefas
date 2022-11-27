@@ -24,17 +24,12 @@ namespace GerenciadorTarefas.Data.Repositories.Task
             return task;
         }
 
-        public TaskModel ChangeStatus(long id, int status)
+        public TaskModel ChangeStatus(TaskModel task, int status)
         {
-            var taskInDB = _context.Tasks.Where(x => x.Id == id).FirstOrDefault();
+            task.status = status;
+            _context.SaveChanges();
 
-            if (taskInDB != null)
-            {
-                taskInDB.status = status;
-                _context.SaveChanges();
-                return taskInDB;
-            }
-            throw new ArgumentNullException();
+            return task;
         }
 
         public TaskModel GetTaskById(long id)
@@ -64,19 +59,12 @@ namespace GerenciadorTarefas.Data.Repositories.Task
             throw new ArgumentNullException();
         }
 
-        public bool DeleteTask(long id)
+        public bool DeleteTask(TaskModel task)
         {
-            var taskInDb = this.GetTaskById(id);
+            _context.Tasks.Remove(task);
+            _context.SaveChanges();
 
-            if (taskInDb != null)
-            {
-                _context.Tasks.Remove(taskInDb);
-                _context.SaveChanges();
-
-                return true;
-            }
-
-            throw new ArgumentNullException(nameof(id));
+            return true;
         }
     }
 }

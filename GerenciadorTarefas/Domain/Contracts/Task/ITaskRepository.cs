@@ -7,8 +7,8 @@ namespace GerenciadorTarefas.Domain.Contracts.Task
         List<TaskModel> GetTasks();
         TaskModel GetTaskById(long id);
         TaskModel SaveTask(TaskModel task);
-        TaskModel ChangeStatus(long id, int status);
+        TaskModel ChangeStatus(TaskModel task, int status);
         TaskModel EditTask(TaskModel task);
-        bool DeleteTask(long id);
+        bool DeleteTask(TaskModel task);
     }
 }

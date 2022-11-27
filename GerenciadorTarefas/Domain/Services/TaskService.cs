@@ -18,7 +18,13 @@ namespace GerenciadorTarefas.Domain.Services
 
         public TaskModel ChangeStatus(long id, int status)
         {
-            return _taskRepository.ChangeStatus(id, status);
+            var taskInDB = _taskRepository.GetTaskById(id);
+
+            if (taskInDB != null)
+            {
+                return _taskRepository.ChangeStatus(taskInDB, status);
+            }
+            throw new ArgumentNullException(nameof(taskInDB));
         }
 
         public List<TaskModel> GetTasks()
@@ -38,7 +44,13 @@ namespace GerenciadorTarefas.Domain.Services
 
         public bool DeleteTask(long id)
         {
-            return _taskRepository.DeleteTask(id);
+            var taskInDB = _taskRepository.GetTaskById(id);
+
+            if (taskInDB != null)
+            {
+                return _taskRepository.DeleteTask(taskInDB);
+            }
+            return false;
         }
     }
 }

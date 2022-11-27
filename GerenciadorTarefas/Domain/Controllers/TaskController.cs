@@ -29,13 +29,9 @@ namespace GerenciadorTarefas.Domain.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    _taskService.SaveTask(task);
-                    TempData["MensagemSucesso"] = "Tarefa cadastrada com sucesso";
-                    return RedirectToAction("Index");
-                }
-                return View(task);
+                _taskService.SaveTask(task);
+                TempData["MensagemSucesso"] = "Tarefa cadastrada com sucesso";
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
