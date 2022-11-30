@@ -45,6 +45,7 @@ namespace GerenciadorTarefas.Domain.Controllers
             try
             {
                 _taskService.ChangeStatus(id, status);
+                TempData["MensagemSucesso"] = "Alterado o status da tarefa com sucesso";
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

@@ -1,5 +1,6 @@
 using GerenciadorTarefas.Data;
 using GerenciadorTarefas.Data.Repositories.Task;
+using GerenciadorTarefas.Data.Repositories.User;
 using GerenciadorTarefas.Domain.Contracts.Task;
 using GerenciadorTarefas.Domain.Services;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>
     (x => x.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

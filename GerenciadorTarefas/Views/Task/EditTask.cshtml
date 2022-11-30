@@ -9,16 +9,16 @@
 
 <section class="p-4 container-fluid border border-info shadow rounded">
     <form asp-controller="Task" asp-action="EditTask" method="post">
-      <div class="mb-3 ">
-        <label for="title" class="form-label">Título</label>
-        <input type="text" name="title" asp-for="Title" class="form-control">
-            @Html.ValidationMessageFor(x => x.Title)
-     </div>
-      <div class="mb-3">
-        <label for="description">Descrição</label>
-        <textarea class="form-control" name="description" asp-for="Description" style="height: 100px"></textarea>
-            @Html.ValidationMessageFor(x => x.Description)
-      </div>
+    <div class="form-floating mb-3">
+            <input type="text" id="floatingTitle" asp-for="Title" class="form-control" placeholder="Digite o título da tarefa">
+            <label for="floatingTitle">Título</label>
+        @Html.ValidationMessageFor(x => x.Title)
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="floatingDescription" asp-for="Description" style="height: 100px" placeholder="Digite a descrição da tarefa"></textarea>
+            <label for="floatingDescription">Descrição</label>
+        @Html.ValidationMessageFor(x => x.Description)
+        </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <button type="submit" class="btn btn-primary shadow">Editar</button>
             <button class ="btn btn-warning shadow" asp-asp-controller="Task" asp-action="Index">Voltar</button>

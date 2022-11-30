@@ -1,11 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Login Page";
 }
+
 <section class="d-flex align-items-center">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
                 <div class="card rounded-3 text-black shadow">
+                    @if (TempData["MensagemSucesso"] != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="close">X</button>
+                            @TempData["MensagemSucesso"]
+                        </div>
+                    }
+
+                    @if (TempData["MensagemErro"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="close">X</button>
+                            @TempData["MensagemErro"]
+                        </div>
+                    }
+
                     <div class="row g-0">
                         <div class="col-lg-6">
                             <div class="card-body p-md-5 mx-md-4">
@@ -15,14 +32,14 @@
                                 </div>
 
                                 <form>
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="email">Email</label>
+                                    <div class="form-floating mb-3">
                                         <input type="email" id="email" class="form-control" placeholder="Digite seu email" />
+                                        <label class="form-label" for="email">Email</label>
                                     </div>
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="password">Senha</label>
+                                    <div class="form-floating mb-3">
                                         <input type="password" id="password" class="form-control" placeholder="Digite sua senha"/>
+                                        <label class="form-label" for="password">Senha</label>
                                     </div>
 
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
