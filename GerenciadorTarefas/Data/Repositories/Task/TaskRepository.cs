@@ -13,7 +13,7 @@ namespace GerenciadorTarefas.Data.Repositories.Task
 
         public List<TaskModel> GetTasks()
         {
-            return _context.Tasks.ToList();
+            return _context.Tasks.ToList().OrderByDescending(x => x.Id).ToList();
         }
 
         public TaskModel SaveTask(TaskModel task)

@@ -11,6 +11,7 @@ namespace GerenciadorTarefas.Data.Models
         public string Email { get; set; } = string.Empty;
         [Required(ErrorMessage = "O campo senha é obrigatório")]
         public string Password { get; set; } = string.Empty;
-        public List<TaskModel> Tasks { get; set; }
+        public List<TaskModel> Tasks { get; set; } = new List<TaskModel>();
+        public List<NoteModel> Notes { get; set; } = new List<NoteModel>();
     }
 }

@@ -22,6 +22,32 @@ namespace GerenciadorTarefas.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("GerenciadorTarefas.Data.Models.NoteModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notes");
+                });
+
             modelBuilder.Entity("GerenciadorTarefas.Data.Models.TaskModel", b =>
                 {
                     b.Property<long>("Id")
@@ -75,6 +101,15 @@ namespace GerenciadorTarefas.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("GerenciadorTarefas.Data.Models.NoteModel", b =>
+                {
+                    b.HasOne("GerenciadorTarefas.Data.Models.UserModel", "user")
+                        .WithMany("Notes")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("user");
+                });
+
             modelBuilder.Entity("GerenciadorTarefas.Data.Models.TaskModel", b =>
                 {
                     b.HasOne("GerenciadorTarefas.Data.Models.UserModel", "user")
@@ -86,6 +121,8 @@ namespace GerenciadorTarefas.Migrations
 
             modelBuilder.Entity("GerenciadorTarefas.Data.Models.UserModel", b =>
                 {
+                    b.Navigation("Notes");
+
                     b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618

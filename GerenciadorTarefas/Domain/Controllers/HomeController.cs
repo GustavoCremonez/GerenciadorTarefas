@@ -1,5 +1,5 @@
 ﻿using GerenciadorTarefas.Data.Models;
-using GerenciadorTarefas.Domain.Contracts.Task;
+using GerenciadorTarefas.Domain.Contracts.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciadorTarefas.Domain.Controllers
